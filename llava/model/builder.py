@@ -49,7 +49,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
     else:
         is_multimodal = False
 
-    if "llava" in model_name.lower() or is_multimodal:
+    if "llava" in model_name.lower() or is_multimodal or "pangea" in model_name.lower():
         # Load LLaVA model
         if "lora" in model_name.lower() and model_base is None:
             warnings.warn(
@@ -203,7 +203,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
 
                 model = LlavaLlamaForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, attn_implementation=attn_implementation, config=llava_cfg, **kwargs)
 
-            elif "qwen" in model_name.lower() or "quyen" in model_name.lower():
+            elif "qwen" in model_name.lower() or "quyen" in model_name.lower() or "pangea" in model_name.lower():
                 tokenizer = AutoTokenizer.from_pretrained(model_path)
                 if "moe" in model_name.lower() or "A14B" in model_name.lower():
                     from llava.model.language_model.llava_qwen_moe import LlavaQwenMoeConfig
@@ -277,7 +277,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
     rank0_print(f"Model Class: {model.__class__.__name__}")
     image_processor = None
 
-    if "llava" in model_name.lower() or is_multimodal:
+    if "llava" in model_name.lower() or is_multimodal or "pangea" in model_name.lower():
         mm_use_im_start_end = getattr(model.config, "mm_use_im_start_end", False)
         mm_use_im_patch_token = getattr(model.config, "mm_use_im_patch_token", True)
         if mm_use_im_patch_token:
