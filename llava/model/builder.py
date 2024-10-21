@@ -49,7 +49,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
     else:
         is_multimodal = False
 
-    if "llava" in model_name.lower() or is_multimodal or "pangea" in model_name.lower():
+    if "llava" in model_name.lower() or is_multimodal or "pangea" in model_name.lower() or "pulse" in model_name.lower():
         # Load LLaVA model
         if "lora" in model_name.lower() and model_base is None:
             warnings.warn(
