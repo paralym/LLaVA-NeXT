@@ -27,11 +27,10 @@ standalone = [
 
 train = [
     "llava[standalone]",
-    "numpy==1.26.1",
+    "numpy==1.26.4",
     "open_clip_torch",
     "fastapi",
     "markdown2[all]",
-    "numpy",
     "requests",
     "sentencepiece",
     "torch==2.1.2",
