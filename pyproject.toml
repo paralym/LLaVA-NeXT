@@ -49,7 +49,7 @@ train = [
     "einops-exts==0.0.4",
     "gradio_client==0.2.9",
     "urllib3<=2.0.0",
-    "datasets==2.16.1",
+    "datasets",
     "pydantic==1.10.8",
     "timm",
     "hf_transfer",
