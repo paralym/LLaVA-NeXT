@@ -277,6 +277,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
     rank0_print(f"Model Class: {model.__class__.__name__}")
     image_processor = None
 
+    print("### model name",model_name.lower())
     if "llava" in model_name.lower() or is_multimodal or "pangea" in model_name.lower() or "pulse" in model_name.lower():
         print("### loading vision tower...")
         mm_use_im_start_end = getattr(model.config, "mm_use_im_start_end", False)
