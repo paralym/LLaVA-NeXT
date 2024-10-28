@@ -277,7 +277,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
     rank0_print(f"Model Class: {model.__class__.__name__}")
     image_processor = None
 
-    print("### model name",model_name.lower())
+    rank0_print("### model name",model_name.lower())
     # if "llava" in model_name.lower() or is_multimodal or "pangea" in model_name.lower() or "pulse" in model_name.lower():
     print("### loading vision tower...")
     mm_use_im_start_end = getattr(model.config, "mm_use_im_start_end", False)
@@ -289,7 +289,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
     model.resize_token_embeddings(len(tokenizer))
 
     vision_tower = model.get_vision_tower()
-    print("### vision tower", vision_tower)
+    rank0_print("### vision tower", vision_tower)
     if not vision_tower.is_loaded:
         vision_tower.load_model(device_map=device_map)
     if device_map != "auto":
