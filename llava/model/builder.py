@@ -279,7 +279,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
 
     rank0_print("### model name",model_name.lower())
     # if "llava" in model_name.lower() or is_multimodal or "pangea" in model_name.lower() or "pulse" in model_name.lower():
-    print("### loading vision tower...")
+    rank0_print("### loading vision tower...")
     mm_use_im_start_end = getattr(model.config, "mm_use_im_start_end", False)
     mm_use_im_patch_token = getattr(model.config, "mm_use_im_patch_token", True)
     if mm_use_im_patch_token:
@@ -295,7 +295,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
     if device_map != "auto":
         vision_tower.to(device="cuda", dtype=torch.float16)
     image_processor = vision_tower.image_processor
-
+    rank0_print("### image processpr in bulder", image_processor)
     if hasattr(model.config, "max_sequence_length"):
         context_len = model.config.max_sequence_length
     elif hasattr(model.config, "max_position_embeddings"):
