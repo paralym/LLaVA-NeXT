@@ -289,6 +289,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
     model.resize_token_embeddings(len(tokenizer))
 
     vision_tower = model.get_vision_tower()
+    print("### vision tower", vision_tower)
     if not vision_tower.is_loaded:
         vision_tower.load_model(device_map=device_map)
     if device_map != "auto":
