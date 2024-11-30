@@ -366,6 +366,17 @@ If a question does not make any sense, or is not factually coherent, explain why
     sep2="</s>",
 )
 
+conv_qwen_2_5 = Conversation(
+    system="""<|im_start|>system
+You are Qwen, created by Alibaba Cloud. You are a helpful assistant.""",
+    roles=("<|im_start|>user", "<|im_start|>assistant"),
+    version="qwen",
+    messages=[],
+    offset=0,
+    sep_style=SeparatorStyle.CHATML,
+    sep="<|im_end|>",
+)
+
 conv_llava_llama_2 = Conversation(
     system="You are a helpful language and vision assistant. " "You are able to understand the visual content that the user provides, " "and assist the user with a variety of tasks using natural language.",
     roles=("USER", "ASSISTANT"),
@@ -576,6 +587,7 @@ conv_templates = {
     "llava_mistral_instruct": conv_mistral_instruct,
     "mpt": conv_mpt,
     "qwen_1_5": conv_qwen,
+    "qwen_2_5": conv_qwen_2_5,
     "qwen_2": conv_qwen,
     "gemma_instruct": conv_gemma_instruct,
 }
