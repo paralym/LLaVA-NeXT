@@ -50,7 +50,7 @@ train = [
     "gradio_client==0.2.9",
     "urllib3<=2.0.0",
     "datasets",
-    "pydantic==1.10.8",
+    "pydantic",
     "timm",
     "hf_transfer",
     "opencv-python",
